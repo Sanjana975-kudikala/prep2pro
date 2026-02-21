@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prep2Pro | Adaptive AI Interview Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; transition: all 0.5s ease; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+
+    <nav class="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
+        <div class="text-2xl font-bold tracking-tight text-white">
+            Prep<span class="text-blue-500">2</span>Pro<span class="text-purple-500 text-sm ml-1"></span>
+        </div>
+        <button onclick="window.location.reload()" class="text-sm font-medium text-slate-400 hover:text-white transition">Reset Session</button>
+    </nav>
+
+    <header id="main-header" class="max-w-7xl mx-auto px-8 pt-16 pb-24 text-center">
+        <div class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full">
+            Powered by Groq LPU™ Technology
+        </div>
+        <h1 id="dynamic-title" class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            From Resume to <br><span class="gradient-text">Real Interview Experience</span>
+        </h1>
+    </header>
+
+    <main id="app-container" class="max-w-5xl mx-auto px-8 -mt-12 mb-24 transition-all duration-500">
+        <div id="setup-view" class="glass rounded-3xl p-8 md:p-12 shadow-2xl">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h3 class="text-xl font-semibold text-white flex items-center">
+                        <span class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center mr-3 text-sm">1</span>
+                        Resume Context
+                    </h3>
+                    <div onclick="document.getElementById('resume-upload').click()" class="border-2 border-dashed border-slate-700 rounded-2xl p-10 text-center hover:border-blue-500/50 transition cursor-pointer group bg-slate-900/50">
+                        <input type="file" id="resume-upload" class="hidden" accept=".pdf">
+                        <i id="upload-icon" class="fa-solid fa-file-pdf text-4xl text-slate-500 group-hover:text-blue-400 mb-4 transition"></i>
+                        <p id="upload-text" class="text-slate-400 text-sm">Click to upload your PDF resume</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6 text-slate-300">
+                    <h3 class="text-xl font-semibold text-white flex items-center">
+                        <span class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center mr-3 text-sm">2</span>
+                        Target Parameters
+                    </h3>
+                    <div class="space-y-4">
+                        <input type="text" id="company-name" placeholder="Company Name (e.g. Google)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none">
+                        <input type="text" id="job-role" placeholder="Job Role (e.g. Backend Developer)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none">
+                        <select id="difficulty-level" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:border-blue-500 outline-none appearance-none">
+                            <option value="entry">Entry Level / Intern</option>
+                            <option value="mid">Mid-Level Engineer</option>
+                            <option value="senior">Senior/Staff Engineer</option>
+                        </select>
+                    </div>
+                    <button onclick="processResume()" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-bold text-sm uppercase tracking-widest hover:opacity-90 transition shadow-lg shadow-blue-500/10 mt-4">
+                        Analyze & Prepare <i class="fa-solid fa-wand-magic-sparkles ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
